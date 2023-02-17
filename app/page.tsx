@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import ClientComponent from "./components/ClientComponent";
 import ServerComponent from "./components/ServerComponent";
 import Counter from "./components/Counter";
@@ -7,7 +8,9 @@ export default function Page() {
     <div>
       <ClientComponent>
         <Counter />
-        <ServerComponent />
+        <Suspense fallback={<p>Loading...</p>}>
+          <ServerComponent />
+        </Suspense>
       </ClientComponent>
     </div>
   );
